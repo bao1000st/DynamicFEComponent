@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+  <div id="toReplace">
+    <div :is="currentComponent"></div>
+    <div v-show="!currentComponent" v-for="component in componentsArray">
+      <button @click="swapComponent(component)">{{component}}</button>
+    </div>
+  </div>
+    <button @click="swapComponent(null)">Close</button>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.16/vue.js"></script>
+
+</body>
+<script>
+  new Vue({
+  el: 'body',
+  data: {
+    currentComponent: null,
+    componentsArray: ['foo', 'bar']
+  },
+  components: {
+    'foo': {
+      template: '<h1>Foo component</h1>'
+    },
+    'bar': {
+      template: '<h1>Bar component</h1>'
+    }
+  },
+  methods: {
+    swapComponent: function(component)
+    {
+      this.currentComponent = component;
+    }
+  }
+})
+</script>
+</html>
